@@ -42,6 +42,6 @@ jobs:
       run: |
         git config --global user.name "Farhan Hanif Azhary"
         git config --global user.email "farhanhanifazhary@gmail.com"
-        git add preprocessing/heart_failure_clinical_records_dataset-clean.csv
+        git add preprocessing/heart_failure_clinical_records_dataset_preprocessing.csv
         git commit -m "Auto-generated: Processed Heart Failure Dataset" || echo "No changes to commit"
         git push
