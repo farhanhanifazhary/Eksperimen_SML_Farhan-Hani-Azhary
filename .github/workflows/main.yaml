@@ -17,7 +17,7 @@ jobs:
     steps:
     # 1. Ambil kode dari repository
     - name: Checkout repository
-      uses: actions/checkout/checkout@v3
+      uses: actions/checkout@v3
 
     # 2. Siapkan Python
     - name: Set up Python
