@@ -1,0 +1,47 @@
+name: Heart Failure Data Pipeline
+
+# Trigger: Jalan setiap kali ada push ke branch 'main'
+on:
+  push:
+    branches:
+      - main
+
+# Agar GitHub Actions bisa save file balik ke repo
+permissions:
+  contents: write
+
+jobs:
+  automate-preprocessing:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Ambil kode dari repository
+    - name: Checkout repository
+      uses: actions/checkout/checkout@v3
+
+    # 2. Siapkan Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12.7'
+
+    # 3. Install Library yang dibutuhkan
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas scikit-learn
+
+    # 4. Jalankan script automate yang sudah kamu buat
+    - name: Run Preprocessing Script
+      run: |
+        cd preprocessing
+        python automate_Farhan-Hanif-Azhary.py
+
+    # 5. Commit dan Push hasilnya balik ke GitHub
+    - name: Commit and Push Processed Data
+      run: |
+        git config --global user.name "Farhan Hanif Azhary"
+        git config --global user.email "farhanhanifazhary@gmail.com"
+        git add preprocessing/heart_failure_clinical_records_dataset-clean.csv
+        git commit -m "Auto-generated: Processed Heart Failure Dataset" || echo "No changes to commit"
+        git push
