@@ -3,8 +3,10 @@ import os
 from sklearn.preprocessing import StandardScaler
 
 # --- KONFIGURASI PATH---
-INPUT_PATH = '/home/hanif/Eksperimen_SML_Farhan-Hanif-Azhary/heart_failure_clinical_records_dataset_raw.csv'
-OUTPUT_PATH = '/home/hanif/Eksperimen_SML_Farhan-Hanif-Azhary/preprocessing/heart_failure_clinical_records_dataset_preprocessing.csv'
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+INPUT_PATH = REPO_ROOT / "heart_failure_clinical_records_dataset_raw.csv"
+OUTPUT_PATH = REPO_ROOT / "preprocessing" / "heart_failure_clinical_records_dataset_preprocessing.csv"
 
 def load_data(path):
     if not os.path.exists(path):
