@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 from sklearn.preprocessing import StandardScaler
+from pathlib import Path
 
 # --- KONFIGURASI PATH---
 REPO_ROOT = Path(__file__).resolve().parent.parent
